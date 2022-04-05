@@ -1,15 +1,6 @@
-<?php include 'config.php'; ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Get Data</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
+@include('header')
     <div class="request-api">
-        <form method="post" action="data.php" name="getdata" id="getdata" onSubmit="actionOnSubmit()">
+        <form method="post" action="/getData" name="getdata" id="getdata" onSubmit="actionOnSubmit()">
             @csrf
             <div class="form-control">
                 <select name="method_name">
@@ -34,10 +25,10 @@
     <div class="request-api hint">
         <h3>Request url should be:</h3>
         <ul>
-            <li><?=HOME;?>/data.php/?id=1</li>
-            <li><?=HOME;?>/data.php/?timestamp=1647570247</li>          
-            <li><?=HOME;?>/data.php/2</li>
-            <li><?=HOME;?>/data.php/get_all_records</li>
+            <li>{{url()->current()}}/data/?id=1</li>
+            <li>{{url()->current()}}/data/?timestamp=1647570247</li>          
+            <li>{{url()->current()}}/data/2</li>
+            <li>{{url()->current()}}/data/get_all_records</li>
         </ul>
         <p>Json Format</p>
         <pre>
@@ -47,13 +38,4 @@
             }
         </pre>
     </div>
-</body>
-<script>
-
-function actionOnSubmit(){
-    var e = document.getElementById("request_url");
-    var formaction = e.value;
-    document.getdata.action = formaction;
-}
-</script>
-</html>
+@include('footer')

@@ -11,15 +11,15 @@
     justify-content: center;
 }
 .request-api #getdata .form-control{
-	width: 15%;
+	width: 30%;
 	padding: 10px;
 }
 .request-api #getdata .form-control input, .request-api #getdata .form-control select{
 	padding: 10px;
 }
-.request-api #getdata .form-control:nth-child(2){
+/*.request-api #getdata .form-control:nth-child(2){
 	width: 60%;
-}
+}*/
 .request-api #getdata .form-control #request_url{
 	width: 100%;
 }

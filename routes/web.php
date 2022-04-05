@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::view('/', 'index');
+Route::view('/data', 'data');
+Route::post('/getData', 'App\Http\Controllers\RequestapiController@getData');
