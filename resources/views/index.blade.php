@@ -26,7 +26,7 @@
         <h3>Request url should be:</h3>
         <ul>
             <li>{{url()->current()}}/data/?id=1</li>
-            <li>{{url()->current()}}/data/?timestamp=1647570247</li>          
+            <li>{{url()->current()}}/data/?timestamp=1649322569</li>          
             <li>{{url()->current()}}/data/2</li>
             <li>{{url()->current()}}/data/get_all_records</li>
         </ul>

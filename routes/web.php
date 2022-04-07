@@ -26,12 +26,32 @@ Route::view('/', 'index');
 Route::controller(RequestapiController::class)->group(function () {
 	Route::any('/data/get_all_records', 'allVersion');
     Route::get('/data/{id}', 'versionByID');
+    //Route::get('/data/{timestamp}', 'versionByTimestamp');
+    Route::post('/data/{id}', 'checkVersionID');
+    Route::post('/data', 'checkVersionID');
+
     Route::get('/data', function(Request $request) {
+    	$id = $timestamp = "";
     	$url = $request->input('request_url');
     	$id = explode("?id=", $url);
-    	$id = end($id);  
-	    if(isset($id)){
-	       return (new RequestapiController)->versionByID($id);
+    	if(is_array($id) && sizeof($id) > 1){
+    		$id = end($id);
+    		return (new RequestapiController)->versionByID($id);
+    	}
+
+	    $timestamp = explode("?timestamp=", $url);
+	    if(is_array($timestamp) && sizeof($timestamp) > 1){
+	    	$timestamp = end($timestamp);
+	    	return (new RequestapiController)->versionByTimestamp($timestamp);
 	    }
-    });
+    });   
+
+    // Route::get('/data', function(Request $request) {
+    // 	$url = $request->input('request_url');
+    // 	$timestamp = explode("?timestamp=", $url);
+    // 	$timestamp = end($timestamp);  
+	   //  if(isset($timestamp)){
+	   //     return (new RequestapiController)->versionByTimestamp($timestamp);
+	   //  }
+    // });  
 });

@@ -6,9 +6,13 @@
     <title>All Version</title>
 </head>
 <body>
-    <pre>
-    {{json_encode($version, JSON_PRETTY_PRINT)}}
-    </pre>
+    @if($version)
+        <pre>
+        {{json_encode($version, JSON_PRETTY_PRINT)}}
+        </pre>
+    @else
+        {{$status}}
+    @endif
     <a href="{{url('/')}}">Make a new request</a>
 </body>
 </html>
