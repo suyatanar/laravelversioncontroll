@@ -6,6 +6,9 @@
     <title>All Version</title>
 </head>
 <body>
-    <a href="{{config('constant.website_link')}}">Make a new request</a>
+    <pre>
+    {{json_encode($version, JSON_PRETTY_PRINT)}}
+    </pre>
+    <a href="{{url('/')}}">Make a new request</a>
 </body>
 </html>

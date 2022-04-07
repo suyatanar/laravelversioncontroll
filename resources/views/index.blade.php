@@ -3,7 +3,7 @@
         <form method="post" action="/getData" name="getdata" id="getdata" onSubmit="actionOnSubmit()">
             @csrf
             <div class="form-control">
-                <select name="method_name">
+                <select name="method_name" id="form-method">
                     <option value="" selected disabled>Select Method</option>
                     <option value="get">GET</option>
                     <option value="post">POST</option>
