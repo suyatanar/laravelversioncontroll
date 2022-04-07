@@ -25,4 +25,21 @@ class RequestapiModel extends Model{
         //dd($version);
         return $version;
     }
+
+    public function getVersionByID($id){
+        $all_data = DB::table('version')
+                ->where('id', '=', $id)
+                ->get();
+
+        $version = array();
+        foreach($all_data as $data){            
+            $version[$data->id] = array(
+                'id'    => $data->id,
+                'name'  => $data->name,
+                'created_at'  => $data->created_at,
+                'updated_at'  => $data->updated_at,
+            );
+        }
+        return $version;
+    }
 }

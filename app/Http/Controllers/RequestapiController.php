@@ -17,4 +17,9 @@ class RequestapiController extends Controller{
         return view('data')->with('version', $info);
     }
 
+    public function versionByID($id){
+        $info = $this->version->getVersionByID($id); 
+        return view('data')->with('version', $info);
+    }
+
 }

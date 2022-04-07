@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\RequestapiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,5 +18,11 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::view('/', 'index');
 //Route::view('/data', 'data');
-Route::post('/data', 'App\Http\Controllers\RequestapiController@getData');
-Route::get('/data/get_all_records', 'App\Http\Controllers\RequestapiController@allVersion');
+//Route::post('/data', 'App\Http\Controllers\RequestapiController@getData');
+
+//Route::any('/data/get_all_records', 'App\Http\Controllers\RequestapiController@allVersion');
+
+Route::controller(RequestapiController::class)->group(function () {
+	Route::any('/data/get_all_records', 'allVersion');
+    Route::get('/data/{id}', 'versionByID');
+});
