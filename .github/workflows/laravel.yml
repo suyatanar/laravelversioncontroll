@@ -33,3 +33,9 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: laravel.testingonline.business
+        username: ${{ secrets.ftp_laravel_username }}
+        password: ${{ secrets.ftp_laravel_password }}
