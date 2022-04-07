@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RequestapiController;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,4 +26,12 @@ Route::view('/', 'index');
 Route::controller(RequestapiController::class)->group(function () {
 	Route::any('/data/get_all_records', 'allVersion');
     Route::get('/data/{id}', 'versionByID');
+    Route::get('/data', function(Request $request) {
+    	$url = $request->input('request_url');
+    	$id = explode("?id=", $url);
+    	$id = end($id);  
+	    if(isset($id)){
+	       return (new RequestapiController)->versionByID($id);
+	    }
+    });
 });
