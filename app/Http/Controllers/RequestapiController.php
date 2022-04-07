@@ -52,10 +52,10 @@ class RequestapiController extends Controller{
                 $status = $this->updateID($id, $name, $timestamp);
                 
             }else{
-                $status = $this->insertID($name, $timestamp);
+                $status = $this->version->insertVersionByID($name, $timestamp); 
             }
         }else{
-            $status = $this->insertID($name, $timestamp);
+            $status = $this->version->insertVersionByID($name, $timestamp); 
         }
         
         return view('data')
@@ -68,9 +68,18 @@ class RequestapiController extends Controller{
         return $status;
     }
 
-    public function insertID($name, $timestamp){
+    public function insertID(Request $request){
+        $timestamp = date('Y-m-d H:i:s');
+        $name = "";
+        if(isset($request->update_data)){
+            $data = json_decode($request->update_data);
+            $name = (!empty($data->name)) ? $data->name : '';
+            $timestamp = (!empty($data->timestamp)) ? $data->timestamp : date('Y-m-d H:i:s');
+        }
         $status = $this->version->insertVersionByID($name, $timestamp); 
-        return $status;
+        return view('data')
+                ->with('status', $status)
+                ->with('version', "");
     }
 
 }

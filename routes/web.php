@@ -19,7 +19,7 @@ Route::controller(RequestapiController::class)->group(function () {
     Route::get('/data/{id}', 'versionByID');
     //Route::get('/data/{timestamp}', 'versionByTimestamp');
     Route::post('/data/{id}', 'checkVersionID');
-    Route::post('/data', 'checkVersionID');
+    Route::post('/data', 'insertID');
 
     Route::get('/data', function(Request $request) {
     	$id = $timestamp = "";
