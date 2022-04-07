@@ -13,16 +13,7 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::view('/', 'index');
-//Route::view('/data', 'data');
-//Route::post('/data', 'App\Http\Controllers\RequestapiController@getData');
-
-//Route::any('/data/get_all_records', 'App\Http\Controllers\RequestapiController@allVersion');
-
 Route::controller(RequestapiController::class)->group(function () {
 	Route::any('/data/get_all_records', 'allVersion');
     Route::get('/data/{id}', 'versionByID');
@@ -45,13 +36,4 @@ Route::controller(RequestapiController::class)->group(function () {
 	    	return (new RequestapiController)->versionByTimestamp($timestamp);
 	    }
     });   
-
-    // Route::get('/data', function(Request $request) {
-    // 	$url = $request->input('request_url');
-    // 	$timestamp = explode("?timestamp=", $url);
-    // 	$timestamp = end($timestamp);  
-	   //  if(isset($timestamp)){
-	   //     return (new RequestapiController)->versionByTimestamp($timestamp);
-	   //  }
-    // });  
 });
